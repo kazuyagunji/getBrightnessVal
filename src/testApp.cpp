@@ -97,10 +97,21 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-    myParticleDraw.mouseDragged(x, y);
+    if (y <= 355 && y >= 99) {
+        myParticleDraw.mouseDragged(x, y);
+    }
+    
     valY = -y + 356;
-    if (valY >= 1 && valY <= 256) {
+    if (valY >= 1 && valY <= 254) {
         Pos.push_back(valY);
+    }
+    if (y > 356) {
+        Pos.push_back(0);
+        myParticleDraw.mouseDragged(x, 356);
+    }
+    if (y < 100) {
+        Pos.push_back(255);
+        myParticleDraw.mouseDragged(x, 100);
     }
     
 }
